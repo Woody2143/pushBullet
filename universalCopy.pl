@@ -67,8 +67,8 @@ my $resp = $ua->request($req);
 
 #TODO - Send output to log file, or add an option for it
 if ($resp->is_success) {
-    my $message = decode_json $resp->decoded_content;
-    say 'Received reply: ' . Dumper($message);
+    #my $message = decode_json $resp->decoded_content;
+    #say 'Received reply: ' . Dumper($message);
 } else {
     say 'HTTP POST error code: ' . $resp->code;
     say 'HTTP POST error message: ' . $resp->message;
