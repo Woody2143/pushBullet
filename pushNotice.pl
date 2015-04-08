@@ -6,15 +6,15 @@ use JSON;
 use Data::Dumper;
 
 #
-# Simple script for sending PushBullet Notes 
+# Simple script for sending PushBullet Notes
 # Create an account at  https://www.pushbullet.com/
-# Look at your account settings for your Access Token 
+# Look at your account settings for your Access Token
 # Save the token to ~/.pushbulletrc
 #   apiKey=<ACCESS KEY>
 #
 # Use the program by piping in text to the script
 # that you want in the body of the notification.
-# Set the title by specifying it as the first 
+# Set the title by specifying it as the first
 # argument after the script.
 # Example:
 #   echo "Message Body" | pushNotice.pl "Notice Subject"
@@ -26,12 +26,10 @@ my $server = 'https://api.pushbullet.com/v2/pushes';
 my $CONFIG_FILE = "$ENV{HOME}/.pushbulletrc";
 
 my $conf = Config::Tiny->read($CONFIG_FILE)
-    or die 'failed to open ~/.pushbulletrc file to get API key: ' . Config::Tiny->errstr;
+    or die "Failed to open '$CONFIG_FILE' file to get API key: " . Config::Tiny->errstr;
 
-my $apiKey = $conf->{_}{apiKey};
-
-if ($apiKey eq '') {
-    die 'Unable to locate API Key in .pushbulletrc file.'; }
+my $apiKey = $conf->{_}{apiKey}
+    or die "Unable to locate API Key in '$CONFIG_FILE' file.";
 
 my $title = shift @ARGV || 'Notice!';
 my $body;
