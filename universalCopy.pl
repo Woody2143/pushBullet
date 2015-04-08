@@ -23,7 +23,8 @@ use Data::Dumper;
 #
 # I am trying this out with tmux right now.
 # In tmux.conf
-#  bind C-c run "tmux save-buffer - | ~/bin/universalCopy.pl"
+#  bind C-c run "tmux save-buffer - | unix2dos | ~/bin/universalCopy.pl"
+#  (added unix2dos as windows didn't like the formatting from linux)
 #
 # Once something is highlighted use the tmux key with Ctrl-C
 # the data in the copy buffer will be pushed out.
