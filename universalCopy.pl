@@ -22,7 +22,11 @@ use Data::Dumper;
 #   echo "text to copy" | universalCopy.pl
 #
 # I am trying this out with tmux right now.
-# In tmux.rc
+# In tmux.conf
+#  bind C-c run "tmux save-buffer - | ~/bin/universalCopy.pl"
+#
+# Once something is highlighted use the tmux key with Ctrl-C
+# the data in the copy buffer will be pushed out.
 #
 
 my $server = 'https://api.pushbullet.com/v2/ephemerals';
